@@ -66,10 +66,11 @@ def spotty_transit_model(spot_coverage,transit_depth,R,P,v,t,g,contrast):
 
   old_in_transit = in_transit.copy()
 
-  out_transit = convolve(wvl,out_transit,R)
-  in_transit = convolve(wvl,in_transit,R)
+  if R != None:
+    out_transit = convolve(wvl,out_transit,R)
+    in_transit = convolve(wvl,in_transit,R)
 
-  index = [(wvl > 4000) & (wvl < 8500)]
+  index = [(wvl > 100) & (wvl < 10000)]
 
   wvl = wvl[index]
   out_transit = out_transit[index]
